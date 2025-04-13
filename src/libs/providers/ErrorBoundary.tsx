@@ -125,6 +125,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     }
 
     return children;
+    
   }
 }
 
