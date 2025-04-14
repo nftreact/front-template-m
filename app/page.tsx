@@ -6,5 +6,6 @@ export default function LandingPage() {
       {' '}
       main section
     </Flex>
+    
   )
 }
