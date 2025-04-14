@@ -45,5 +45,17 @@
     "eslint-config-next": "15.2.2",
     "prettier": "3.4.2",
     "typescript": "5"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nftreact/front-template-m.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nftreact/front-template-m/issues"
+  },
+  "homepage": "https://github.com/nftreact/front-template-m#readme"
 }
