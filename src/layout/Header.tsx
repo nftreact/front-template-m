@@ -1,9 +1,14 @@
 "use client";
 
-// import { Flex } from "@/libs/primitives";
+import { Flex, Box } from "@/libs/primitives";
+
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import { Button, Box } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { blue } from "@mui/material/colors";
+import Image from "next/image";
+import Link from "next/link";
+// import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+// import { Button, Box } from "@mui/material";
 
 /**
  * props
@@ -11,10 +16,14 @@ import { Button, Box } from "@mui/material";
  */
 
 const Header = () => {
-  /**
-   * const and variables
-   * _______________________________________________________________________________
-   */
+  const menuItems = [
+    { title: "برنامه ریز", path: "/" },
+    { title: "تور ساز", path: "/a" },
+    { title: "نقاط گردشگری", path: "/b" },
+    { title: "مقالات", path: "/c" },
+    { title: "تماس با ما", path: "/d" },
+    { title: "درباره ما", path: "/e" },
+  ];
 
   /**
    * useEffect
@@ -32,58 +41,48 @@ const Header = () => {
    */
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "space-between",
-        px: 5,
-        py: 1,
-      }}
-    >
-      <Box
-        sx={{ justifyContent: "center" }}
-        display={{ mobile: "flex", laptop: "none" }}
+    <>
+      <Flex
+        border={"5px solid red"}
+        flexDirection={"row"}
+        justifyContent={"space-between"}
+        paddingX={"15px"}
       >
-        <MenuOutlinedIcon sx={{ fontSize: "30px", mt: 1 }} />
-      </Box>
-      <Box
-        component="img"
-        src="/image/header-logo.png"
-        alt="لوگو بزنیم بیرون"
-        sx={{
-          width: "100%",
-          maxWidth: "113px",
-          ml: "50px",
-          height: "auto",
-        }}
-      />
-      <Box
-        sx={{ alignItems: "center" }}
-        display={{ laptop: "flex", mobile: "none" }}
-      >
-        <Button component="a" href="/">
-          برنامه ریز
-        </Button>
-        <Button component="a" href="/about">
-          تور ساز
-        </Button>
-        <Button component="a" href="/contact">
-          نقاط گردشگری
-        </Button>
-        <Button component="a" href="/contact">
-          مقالات
-        </Button>
-        <Button component="a" href="/contact">
-          تماس با ما
-        </Button>
-        <Button component="a" href="/contact">
-          درباره ما
-        </Button>
-      </Box>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <AccountCircleOutlinedIcon sx={{ fontSize: "30px", mt: 1 }} />
-      </Box>
-    </Box>
+        <Box border={"2px solid green"} display={{ laptop: "none" }}>
+          <MenuIcon sx={{ fontSize: "30px", mt: 1 }} />
+        </Box>
+        <Box border={"2px solid green"} paddingTop={1} order={{ laptop: "" }}>
+          <Image
+            src="/image/header-logo.png"
+            width={113}
+            height={32}
+            alt="لوگو"
+          />
+        </Box>
+        <Flex
+          display={{ mobile: "none", laptop: "flex" }}
+          border={"2px solid green"}
+          flexDirection={"row"}
+          justifyContent={"space-between"}
+          gap={2}
+          color={blue}
+          alignContent={"center"}
+          textAlign={"center"}
+          paddingTop={1.5}
+          order={{ laptop: "" }}
+        >
+          {menuItems.map((item, index) => (
+            <Link href={item.path} key={index}>
+              {item.title}
+            </Link>
+          ))}
+        </Flex>
+
+        <Box border={"2px solid green"}>
+          <AccountCircleOutlinedIcon sx={{ fontSize: "30px", mt: 1 }} />
+        </Box>
+      </Flex>
+    </>
   );
 };
 
