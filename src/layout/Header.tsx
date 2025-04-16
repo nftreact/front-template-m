@@ -3,6 +3,8 @@
 import { Box, Button, Flex, Grid,Typography } from '@/libs/primitives'
 import { Container, Link } from '@mui/material'
 import Image from 'next/image'
+import { Buttons } from '../../public/icon'
+import { map } from 'leaflet'
 
 /**
  * props
@@ -12,9 +14,16 @@ import Image from 'next/image'
 const Header = () => {
   /**
    * const and variables
-   * _______________________________________________________________________________
+   * 
    */
-
+    const itemList=[
+      {id:1, text:"برنامه ریز", href:"/planer"},
+      {id:2, text:"تور ساز", href:"/tour"},
+      {id:3, text:"مقالات", href:"/paper"},
+      {id:4, text:"درباره ما", href:"/about"},
+      {id:5, text:"تماس با ما", href:"/contact"},
+      {id:6, text:"تبلیغات", href:"/ads"},
+    ]
   /**
    * useEffect
    * _______________________________________________________________________________
@@ -30,8 +39,38 @@ const Header = () => {
    * _______________________________________________________________________________
    */
   return (
-    <Flex  border={{mobile:"10px solid red",laptop:"20px solid blue"}}  padding={2} justifyContent={'center'} alignItems={'center'}>
-      <Container maxWidth="desktop">
+    <Flex flexDirection="row" paddingX={3} paddingY={0.5} justifyContent={{laptop:"space-between",desktop:"space-between",xtablet:"space-between",tablet:"center",mobile:"center"}} alignItems={'center'}>
+    
+      <Flex>
+        <a href='/#' style={{lineHeight:"0"}}><Image src="/image/header-logo.png" 
+      alt="Logo 1" 
+      width={100} 
+      height={40} 
+      style={{ objectFit: 'contain' }}/></a>
+      
+      </Flex>
+      <Flex display={{laptop:"flex",desktop:"flex",xtablet:"flex",tablet:"none",mobile:"none"}} gap={2} flexDirection='row'  >
+       {itemList.map((item)=>(
+        <Typography key={item.id} color='#105FAE'><a href={item.href}>
+        {item.text}</a>
+        </Typography>
+       ))}
+      
+      </Flex>
+      <Flex display={{laptop:"flex",desktop:"flex",xtablet:"flex",tablet:"none",mobile:"none"}} >
+        <a href='/login'><Buttons width="40px" height="40px"/></a>
+      </Flex>
+    </Flex>
+  )
+}
+
+export default Header
+
+/**
+ * styled-component
+ * _______________________________________________________________________________
+ */
+  {/* <Container maxWidth="desktop">
   
       <Box sx={{ flexGrow: 1 }}>
       <Grid  container spacing={3} gap={10}>
@@ -51,24 +90,7 @@ const Header = () => {
         <Grid justifyContent="center" size={10}>
           
         <Box display="flex" gap={2} justifyContent="center" alignItems={"center"}>  
-                <a href="/planer" >
-                  <Typography >برنامه ریز</Typography>
-                </a>
-                <a href="/tour" >
-                  <Typography  >تور ساز</Typography>
-                </a>
-                <a href="/paper" >
-                  <Typography  >مقالات</Typography>
-                </a>
-                <a href="/about" >
-                  <Typography  >درباره ما</Typography>
-                </a>
-                <a href="/contact" >
-                  <Typography  >تماس با ما</Typography>
-                </a>
-                <a href="/ads" >
-                  <Typography  >تبلیغات</Typography>
-                </a>
+          
               </Box>
         </Grid>
         <Grid size="grow">
@@ -86,14 +108,4 @@ const Header = () => {
         </Grid>
       </Grid>
     </Box>
-      </Container>
-    </Flex>
-  )
-}
-
-export default Header
-
-/**
- * styled-component
- * _______________________________________________________________________________
- */
+      </Container> */}
